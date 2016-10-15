@@ -6,9 +6,14 @@ public class Player {
     private boolean isTurn;
     private Account account;
 
+
     public Player(String playerName) {
         name = playerName;
         account = new Account();
+    }
+    
+    public Account getAccount() {
+        return account;
     }
 
     public String getName() {
