@@ -1,4 +1,4 @@
-package test;
+package Test;
 
 import static org.junit.Assert.*;
 
@@ -8,10 +8,10 @@ import org.junit.Test;
 public class ShakerTest {
 
     // Declares object of the "Shaker" class in the folder "game".
-    private game.Shaker shake = new game.Shaker();
+    private Game.Shaker shake = new Game.Shaker();
 
-    private game.Dice dice1 = new game.Dice();
-    private game.Dice dice2 = new game.Dice();
+    private Game.Dice dice1 = new Game.Dice();
+    private Game.Dice dice2 = new Game.Dice();
 
 
     // Declares variables.
