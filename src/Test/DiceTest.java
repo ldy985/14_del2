@@ -1,4 +1,4 @@
-package test;
+package Test;
 
 import static org.junit.Assert.*;
 
@@ -6,7 +6,7 @@ import static org.junit.Assert.*;
  * Created by Matt_Lab on 26/09/2016.
  */
 public class DiceTest {
-    game.Dice dice = new game.Dice();
+    Game.Dice dice = new Game.Dice();
 
     // Declares variables
     @org.junit.Test

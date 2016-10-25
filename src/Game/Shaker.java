@@ -1,4 +1,4 @@
-package game;
+package Game;
 
 /**
  * Created by timot on 03-10-2016.
