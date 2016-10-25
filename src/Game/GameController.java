@@ -1,6 +1,7 @@
 package Game;
 
 import java.util.Scanner;
+import desktop_resources.GUI;
 
 /**
  * Created by razze on 25-10-2016.
@@ -10,22 +11,24 @@ public final class GameController {
    public static String name;
 
 
-    private static Shaker shaker = new Shaker();
+    private static Shaker shake = new Shaker(2);
     private static Player[] playerArray = new Player[2];
     private static Scanner input = new Scanner(System.in);
-    private static Shaker shake = new Shaker();
-
 
 
     private GameController(){
 
         // Two player objects are instantiated with names in turn.
         // The player objects are then added the playerArray.
-        for(int i = 0; i <= 2; i++){
+        for(int i = 1; i <= 2; i++){
 
             name = input.nextLine();
+
             Player player = new Player(name);
             playerArray[i] = player;
+
+            //NOT SURE ABOUT THIS
+            GUI.addPlayer(player.getName(), 1000);
         }
 
         for(Player player : playerArray){
@@ -44,7 +47,7 @@ public final class GameController {
               // EVERYTHING THAT HAPPENS IN THE PLAYER'S TURN
 
               // Rolls the dice
-               shake.Shake();
+               shake.shake();
 
 
               //Checks what happens on each field corresponding to the sum rolled.
@@ -56,12 +59,6 @@ public final class GameController {
            }
 
         }
-
-
-
-
-
-
 
     }
 
