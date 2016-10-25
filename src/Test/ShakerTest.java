@@ -1,20 +1,25 @@
-package Test;
+package test;
+
+import static org.junit.Assert.*;
 
 import org.junit.Test;
-
-import static org.junit.Assert.assertEquals;
 
 // Tests the Shaker class
 public class ShakerTest {
 
     // Declares object of the "Shaker" class in the folder "game".
-    private Game.Shaker shake = new Game.Shaker(2);
+    private game.Shaker shake = new game.Shaker();
+
+    private game.Dice dice1 = new game.Dice();
+    private game.Dice dice2 = new game.Dice();
+
 
     // Declares variables.
     private boolean getSumTestComplete = false;
+    private boolean getDoubleTestComplete = false;
 
     @Test
-    public void probTest() {
+    public void probTest(){
         int value;
 
         int to = 0;
@@ -30,12 +35,12 @@ public class ShakerTest {
         int tolv = 0;
         int forkertnr = 0;
 
-        // Rolling the die 60000 times.
+        // Rolling the dice 60000 times.
         // Counts the values a specific value has been rolled.
 
         for (int i = 0; i < 1000; i++) {
 
-            shake.shake();
+            shake.Shake();
 
             value = shake.getSum();
 
@@ -81,7 +86,7 @@ public class ShakerTest {
         }
 
         // Tests the program.
-        // Checks if all values, of the die (2-12), has been rolled and equal amount of times (1000/12000)
+        // Checks if all values, of the dice (2-12), has been rolled and equal amount of times (1000/12000)
         // with a deviation of 400 times.
         assertEquals(0, forkertnr);
         assertEquals(28, to, 24);
@@ -103,7 +108,7 @@ public class ShakerTest {
     public void getSumTest() throws Exception {
 
         // Calls the Shake() method in the class Shaker, through the object "shake".
-        shake.shake();
+        shake.Shake();
 
         // Checks if the sum given by the Shaker class is between 2 and 12.
         // Returns a boolean whether it works.
@@ -115,6 +120,28 @@ public class ShakerTest {
 
         // Checks if the booleans are true.
         assertEquals(true, getSumTestComplete);
+
+    }
+
+
+
+    // Tests if the getDouble() method works in the Shaker class.
+    @Test
+    public void getDoubleTest() {
+
+        // Calls the Shake() method in the class Shaker, through the object "shake".
+        shake.Shake();
+
+        // Checks if the getDouble() method works from the Shaker class.
+        // Compares the boolean value of the getDouble() with the boolean value of the test
+        // (Comparing the value of each die rolled, if it's the same value.)
+        if (shake.getDouble() == true && shake.getDie1Value() == shake.getDie2Value()) {
+
+            getDoubleTestComplete = true;
+        }
+
+        // Checks if the boolean values from the getDouble() method are true.
+        assertEquals(shake.getDouble(), getDoubleTestComplete);
 
     }
 

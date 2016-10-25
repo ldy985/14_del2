@@ -1,20 +1,16 @@
-package Test;
+package test;
 
-import Game.Die;
-import org.junit.Test;
-
-import static org.junit.Assert.assertEquals;
-
+import static org.junit.Assert.*;
 
 /**
  * Created by Matt_Lab on 26/09/2016.
  */
-public class DieTest {
-    Die die = new Die();
+public class DiceTest {
+    game.Dice dice = new game.Dice();
 
     // Declares variables
-    @Test
-    public void roll() throws Exception {
+    @org.junit.Test
+    public void Roll() throws Exception {
 
         int value;
         int en = 0;
@@ -25,12 +21,12 @@ public class DieTest {
         int seks = 0;
         int forkertnr = 0;
 
-        // Rolling the die 60000 times.
+        // Rolling the dice 60000 times.
         // Counts the values a specific value has been rolled.
 
         for (int i = 0; i < 60000; i++) {
-            die.roll();
-            value = die.getFaceValue();
+            dice.Roll();
+            value = dice.getFaceValue();
             // System.out.println(value + " ");
             switch (value) {
                 case 1:
@@ -59,7 +55,7 @@ public class DieTest {
         }
 
         // Tests the program.
-        // Checks if all values, of the die (1-6), has been rolled and equal amount of times (10000/60000)
+        // Checks if all values, of the dice (1-6), has been rolled and equal amount of times (10000/60000)
         // with a deviation of 400 times.
         assertEquals(0, forkertnr);
         assertEquals(10000, en, 400);
