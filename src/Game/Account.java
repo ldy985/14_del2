@@ -2,18 +2,18 @@ package Game;
 
 public class Account {
 
-    int balance = 1000;
+    private int balance = 1000;
 
-    boolean addBalance(int amount) {
+    public boolean addBalance(int amount) {
         balance = balance + amount;
         return true;
     }
 
-    int getBalance() {
+    public int getBalance() {
         return balance;
     }
 
-    boolean setBalance(int x) {
+    public boolean setBalance(int x) {
         balance = x;
         return true;
     }

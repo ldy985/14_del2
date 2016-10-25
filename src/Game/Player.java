@@ -1,4 +1,5 @@
 package Game;
+
 public class Player {
 
 
@@ -11,7 +12,7 @@ public class Player {
         name = playerName;
         account = new Account();
     }
-    
+
     public Account getAccount() {
         return account;
     }
