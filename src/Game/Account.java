@@ -1,3 +1,5 @@
+package Game;
+
 public class Account {
 
     int balance = 1000;
