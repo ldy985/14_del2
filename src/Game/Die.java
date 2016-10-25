@@ -1,17 +1,17 @@
-package game;
+package Game;
 
 import java.util.Random;
 
 /**
  * Created by s165240 on 23-09-2016.
  */
-public class Dice {
+public class Die {
 
     private final Random rand = new Random();
 
     private int faceValue;
 
-    public void Roll() {
+    public void roll() {
 
         faceValue = rand.nextInt(6) + 1;
 
