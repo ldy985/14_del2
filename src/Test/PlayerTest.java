@@ -1,29 +1,25 @@
 
-package test;
+package Test;
 
 
-import static org.junit.Assert.*;
+import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 
 public class PlayerTest {
-    game.Player testPlayer = new game.Player("Player1");
 
 
-    @org.junit.Test
+    Game.Player testPlayer = new Game.Player("Player1");
+
+
+    @Test
     public void getName() throws Exception {
         assertEquals("Player1", testPlayer.getName());
     }
 
-    @org.junit.Test
-    public void setPoints() throws Exception {
-        testPlayer.setPoints(100);
-        assertEquals(100, testPlayer.getPoints());
-
-        testPlayer.setPoints(0);
-        assertEquals(0, testPlayer.getPoints());
-    }
-
-    @org.junit.Test
+    @Test
     public void setIsTurn() throws Exception {
         testPlayer.setIsTurn(true);
         assertEquals(true, testPlayer.getIsTurn());
@@ -32,4 +28,8 @@ public class PlayerTest {
         assertEquals(false, testPlayer.getIsTurn());
     }
 
+    @Test
+    public void getAccount() {
+        assertNotNull(testPlayer.getAccount());
+    }
 }
