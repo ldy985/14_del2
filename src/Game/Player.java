@@ -5,7 +5,9 @@ public class Player {
 
     private String name;
     private boolean isTurn;
+    private boolean extraTurn;
     private Account account;
+    private int sumTemp = 999;
 
 
     public Player(String playerName) {
@@ -28,4 +30,13 @@ public class Player {
     public boolean getIsTurn() {
         return isTurn;
     }
+
+    // Rasmus lækre hack for at få GameController til at virke
+    public boolean getExtraTurn() {return extraTurn; }
+
+    public void setExtraTurn(boolean extraTurn) {this.extraTurn = extraTurn;}
+
+    public int getSumTemp() {return sumTemp;}
+
+    public void setSumTemp(int sum){ sumTemp = sum;}
 }

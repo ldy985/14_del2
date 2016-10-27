@@ -7,7 +7,12 @@ public class Game {
 
     public static void main(String[] args) {
 
-       // GameController.gameStart();
-        GameController.generateFields();;
+
+        // The GUI generates the fields on the board
+        GameController.generateFields();
+
+        // The gameStart() method is called to start the game
+        GameController.gameStart();
+
     }
 }
