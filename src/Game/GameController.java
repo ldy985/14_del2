@@ -197,7 +197,7 @@ public final class GameController {
         // Displays new balance in the GUI
         GUI.setBalance(player.getName(), player.getAccount().getBalance());
 
-        //GUI.showMessage(fields[sum - 2].getActionText() + "Rent: " + points);
+        GUI.showMessage(fields[sum - 2].getActionText() + "Rent: " + points);
 
     }
 
