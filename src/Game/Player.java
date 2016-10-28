@@ -5,9 +5,8 @@ public class Player {
 
     private String name;
     private boolean isTurn;
-    private boolean extraTurn;
     private Account account;
-    private int sumTemp = 999;
+    private int carSpot = 0;
 
 
     public Player(String playerName) {
@@ -31,12 +30,27 @@ public class Player {
         return isTurn;
     }
 
-    // Rasmus lækre hack for at få GameController til at virke
-    public boolean getExtraTurn() {return extraTurn; }
+    // Method for checking if someone has won
+    public boolean hasWon() {
 
-    public void setExtraTurn(boolean extraTurn) {this.extraTurn = extraTurn;}
+        int currentBalance = account.getBalance();
 
-    public int getSumTemp() {return sumTemp;}
+        if(currentBalance >= 3000){
 
-    public void setSumTemp(int sum){ sumTemp = sum;}
+            return true;
+
+        } else {
+
+            return false;
+        }
+
+    }
+
+    public int getCarSpot() {
+        return carSpot;
+    }
+
+    public void setCarSpot(int carSpot) {
+        this.carSpot = carSpot;
+    }
 }
