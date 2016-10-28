@@ -6,16 +6,16 @@ public class Account {
 
     public boolean addBalance(int amount) {
         balance = balance + amount;
+
+        if (balance < 0) {
+
+            balance = 0;
+        }
         return true;
     }
 
     public int getBalance() {
         return balance;
-    }
-
-    public boolean setBalance(int newBalance) {
-        balance = newBalance;
-        return true;
     }
 
 }

@@ -27,15 +27,6 @@ public class AccountTest {
         assertEquals(1000, account.getBalance());
     }
 
-    @Test
-    public void setBalance() throws Exception {
-
-        //sets the balance to 20
-        account.setBalance(20);
-
-        //tests if the balance is 20
-        assertEquals(20, account.getBalance());
-    }
 
 }
 

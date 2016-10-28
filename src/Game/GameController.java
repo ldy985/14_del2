@@ -2,8 +2,6 @@ package Game;
 
 import java.awt.*;
 import java.util.Random;
-import java.util.Scanner;
-
 import desktop_codebehind.Car;
 import desktop_fields.Field;
 import desktop_resources.GUI;
@@ -15,18 +13,18 @@ import desktop_fields.*;
 public final class GameController {
 
     private static final Shaker shake = new Shaker(2);
+    private static final Random rand = new Random();
     private static final Player[] playerArray = new Player[2]; // max 6 players
     private static final Field[] fields = new Field[40];
     private static boolean gameWon = false;
-    private static final Random rand = new Random();
 
-    //Prevent creation of a game controller object.
+    //Prevents creation of a game controller object.
     private GameController(){}
+
 
     // Generates the fields for the board in a field array
     public static void generateFields() {
 
-        //fields[0] = new Empty.Builder().build();
 
         fields[0] = new Street.Builder()
                 .setTitle("Tower")
@@ -95,6 +93,7 @@ public final class GameController {
 
     public static void gameStart() {
 
+
         // Two player objects are instantiated with names in turn.
         // The player objects are then added the playerArray.
         for (int i = 0; i <= playerArray.length - 1; i++) {
@@ -118,13 +117,16 @@ public final class GameController {
 
                 while (playerArray[i].getIsTurn() && !gameWon) {
 
+                    //Rolls the dice
                     shake.shake();
 
                     handleFieldAction(shake.getSum(), playerArray[i]);
 
                     if (playerArray[i].hasWon()) {
                         System.out.println(playerArray[i].getName() + " Won");
+
                         gameWon = true;
+
                     } else {
 
                         //When the player should have more than 1 turn
