@@ -1,7 +1,10 @@
 package Game;
 
+import java.awt.*;
+import java.util.Random;
 import java.util.Scanner;
 
+import desktop_codebehind.Car;
 import desktop_fields.Field;
 import desktop_resources.GUI;
 import desktop_fields.*;
@@ -16,10 +19,10 @@ public final class GameController {
     private static Field[] fields = new Field[40];
     private static Scanner input = new Scanner(System.in);
     private static boolean gameWon = false;
+    private static Random rand = new Random();
 
     //Prevent creation of a game controller object.
-    private GameController() {
-    }
+    private GameController(){}
 
     // Generates the fields for the board in a field array
     public static void generateFields() {
@@ -88,9 +91,7 @@ public final class GameController {
 
 
         // Displays the dice on the board
-        GUI.setDice(faceValue1, faceValue2);
-
-
+        GUI.setDice(faceValue1,faceValue2);
     }
 
     public static void gameStart() {
@@ -98,9 +99,13 @@ public final class GameController {
         // Two player objects are instantiated with names in turn.
         // The player objects are then added the playerArray.
         for (int i = 0; i <= playerArray.length - 1; i++) {
-            String name = input.nextLine();
-            playerArray[i] = new Player(name);
-            GUI.addPlayer(playerArray[i].getName(), 1000);
+            name = input.nextLine();
+            Player player = new Player(name);
+            playerArray[i] = player;
+
+            // Adds player to the GUI
+            // Adds a car object which has a new color, specified by a random-method between the integers 0-255
+            GUI.addPlayer(player.getName(), 1000, new Car.Builder().primaryColor(new Color(rand.nextInt(256), rand.nextInt(256), rand.nextInt(256))).build());
         }
 
 
