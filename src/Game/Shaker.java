@@ -23,6 +23,8 @@ public class Shaker {
         }
     }
 
+    public Die[] getDice() {return die;}
+
     public int getSum() {
         return sum;
     }
