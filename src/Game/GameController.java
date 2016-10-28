@@ -1,7 +1,10 @@
 package Game;
 
+import java.awt.*;
+import java.util.Random;
 import java.util.Scanner;
 
+import desktop_codebehind.Car;
 import desktop_fields.Field;
 import desktop_resources.GUI;
 import desktop_fields.*;
@@ -19,8 +22,7 @@ public final class GameController {
     private static final Random rand = new Random();
 
     //Prevent creation of a game controller object.
-    private GameController() {
-    }
+    private GameController(){}
 
     // Generates the fields for the board in a field array
     public static void generateFields() {
