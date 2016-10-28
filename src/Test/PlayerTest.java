@@ -30,6 +30,23 @@ public class PlayerTest {
 
     @Test
     public void getAccount() {
+
         assertNotNull(testPlayer.getAccount());
+    }
+
+    @Test
+    public void hasWon() throws Exception {
+
+        assertEquals(false, testPlayer.hasWon());
+
+        testPlayer.getAccount().addBalance(2000);
+        assertEquals(true, testPlayer.hasWon());
+    }
+
+    @Test
+    public void getCarSpot() throws Exception {
+
+        testPlayer.setCarSpot(5);
+        assertEquals(5, testPlayer.getCarSpot());
     }
 }

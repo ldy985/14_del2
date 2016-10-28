@@ -33,9 +33,15 @@ public class Player {
     // Method for checking if someone has won
     public boolean hasWon() {
 
+
         int currentBalance = account.getBalance();
 
-        return currentBalance >= 3000;
+        if (currentBalance >= 3000) {
+            return true;
+        }
+        else {
+            return false;
+        }
 
     }
 
