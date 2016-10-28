@@ -13,13 +13,8 @@ public class AccountTest {
 
     @Test
     public void addBalance() throws Exception {
-
-
-        int balanceBefore = account.getBalance();
+        
         account.addBalance(100);
-
-        //tests if the start balance starts at 1000
-        assertEquals(balanceBefore, 1000);
 
         //tests if the addBalance works
         assertEquals(1100, account.getBalance());
@@ -28,7 +23,7 @@ public class AccountTest {
     @Test
     public void getBalance() throws Exception {
 
-        //tests if the getBalance returns the right amount
+        //tests if the getBalance returns the right amount and if the starting balance is 1000 points
         assertEquals(1000, account.getBalance());
     }
 
