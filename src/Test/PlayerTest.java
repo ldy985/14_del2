@@ -11,7 +11,7 @@ import static org.junit.Assert.assertNotNull;
 public class PlayerTest {
 
 
-    Game.Player testPlayer = new Game.Player("Player1");
+    private final Game.Player testPlayer = new Game.Player("Player1");
 
 
     @Test

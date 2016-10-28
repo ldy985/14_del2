@@ -13,8 +13,8 @@ public class Account {
         return balance;
     }
 
-    public boolean setBalance(int x) {
-        balance = x;
+    public boolean setBalance(int newBalance) {
+        balance = newBalance;
         return true;
     }
 

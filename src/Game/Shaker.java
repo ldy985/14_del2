@@ -4,7 +4,7 @@ public class Shaker {
 
     //initialising variables
     private int sum;
-    private Die[] die;
+    private final Die[] die;
 
 
     //The Constructor for the Shaker class
@@ -23,13 +23,12 @@ public class Shaker {
         }
     }
 
-    public Die[] getDice() {return die;}
 
     public int getSum() {
         return sum;
     }
 
-    public Die[] getDie() {
+    public Die[] getDice() {
         return die;
     }
 
