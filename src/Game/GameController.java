@@ -15,9 +15,8 @@ import desktop_fields.*;
 public final class GameController {
 
     private static final Shaker shake = new Shaker(2);
-    private static final Player[] playerArray = new Player[6]; // max 6 players
+    private static final Player[] playerArray = new Player[2]; // max 6 players
     private static final Field[] fields = new Field[40];
-    private static final Scanner input = new Scanner(System.in);
     private static boolean gameWon = false;
     private static final Random rand = new Random();
 
@@ -99,7 +98,7 @@ public final class GameController {
         // Two player objects are instantiated with names in turn.
         // The player objects are then added the playerArray.
         for (int i = 0; i <= playerArray.length - 1; i++) {
-            String name = input.nextLine();
+            String name = GUI.getUserString("Insert Name");
             Player player = new Player(name);
             playerArray[i] = player;
 
@@ -142,7 +141,10 @@ public final class GameController {
                         }
 
                     }
-                    input.nextLine();
+
+                    //Next turn knap
+                    GUI.showMessage("Tryk Ok, for at forsætte spillet");
+
 
                 }
 
