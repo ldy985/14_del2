@@ -11,11 +11,12 @@ import desktop_fields.*;
  */
 public final class GameController {
 
-    private static Shaker shake = new Shaker(2);
-    private static Player[] playerArray = new Player[2];
-    private static Field[] fields = new Field[40];
-    private static Scanner input = new Scanner(System.in);
+    private static final Shaker shake = new Shaker(2);
+    private static final Player[] playerArray = new Player[6]; // max 6 players
+    private static final Field[] fields = new Field[40];
+    private static final Scanner input = new Scanner(System.in);
     private static boolean gameWon = false;
+    private static final Random rand = new Random();
 
     //Prevent creation of a game controller object.
     private GameController() {
@@ -82,15 +83,13 @@ public final class GameController {
         // Creates the GUI with the fieldarray
         GUI.create(fields);
 
-        // Declares facevalues to show the die in the GUI
+        // Declares face values to show the die in the GUI
         int faceValue1 = shake.getDie()[0].getFaceValue();
         int faceValue2 = shake.getDie()[1].getFaceValue();
 
 
         // Displays the dice on the board
         GUI.setDice(faceValue1, faceValue2);
-
-
     }
 
     public static void gameStart() {
@@ -99,8 +98,12 @@ public final class GameController {
         // The player objects are then added the playerArray.
         for (int i = 0; i <= playerArray.length - 1; i++) {
             String name = input.nextLine();
-            playerArray[i] = new Player(name);
-            GUI.addPlayer(playerArray[i].getName(), 1000);
+            Player player = new Player(name);
+            playerArray[i] = player;
+
+            // Adds player to the GUI
+            // Adds a car object which has a new color, specified by a random-method between the integers 0-255
+            GUI.addPlayer(player.getName(), 1000, new Car.Builder().primaryColor(new Color(rand.nextInt(256), rand.nextInt(256), rand.nextInt(256))).build());
         }
 
 

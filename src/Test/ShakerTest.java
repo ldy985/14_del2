@@ -8,7 +8,7 @@ import static org.junit.Assert.assertEquals;
 public class ShakerTest {
 
     // Declares object of the "Shaker" class in the folder "game".
-    private Game.Shaker shake = new Game.Shaker(2);
+    private final Game.Shaker shake = new Game.Shaker(2);
 
     // Declares variables.
     private boolean getSumTestComplete = false;

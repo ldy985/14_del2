@@ -3,9 +3,9 @@ package Game;
 public class Player {
 
 
-    private String name;
+    private final String name;
     private boolean isTurn;
-    private Account account;
+    private final Account account;
     private int carSpot = 0;
 
 
@@ -35,14 +35,7 @@ public class Player {
 
         int currentBalance = account.getBalance();
 
-        if(currentBalance >= 3000){
-
-            return true;
-
-        } else {
-
-            return false;
-        }
+        return currentBalance >= 3000;
 
     }
 

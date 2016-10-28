@@ -10,7 +10,7 @@ import static org.junit.Assert.assertEquals;
  * Created by Matt_Lab on 26/09/2016.
  */
 public class DieTest {
-    Die die = new Die();
+    private final Die die = new Die();
 
     // Declares variables
     @Test
