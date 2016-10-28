@@ -86,8 +86,8 @@ public final class GameController {
         GUI.create(fields);
 
         // Declares face values to show the die in the GUI
-        int faceValue1 = shake.getDie()[0].getFaceValue();
-        int faceValue2 = shake.getDie()[1].getFaceValue();
+        int faceValue1 = shake.getDice()[0].getFaceValue();
+        int faceValue2 = shake.getDice()[1].getFaceValue();
 
 
         // Displays the dice on the board
