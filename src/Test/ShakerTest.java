@@ -10,9 +10,6 @@ public class ShakerTest {
     // Declares object of the "Shaker" class in the folder "game".
     private final Game.Shaker shake = new Game.Shaker(2);
 
-    // Declares variables.
-    private boolean getSumTestComplete = false;
-
     @Test
     public void probTest() {
         int value;
@@ -33,7 +30,7 @@ public class ShakerTest {
         // Rolling the die 60000 times.
         // Counts the values a specific value has been rolled.
 
-        for (int i = 0; i < 1000; i++) {
+        for (int i = 0; i < 60000; i++) {
 
             shake.shake();
 
@@ -81,20 +78,20 @@ public class ShakerTest {
         }
 
         // Tests the program.
-        // Checks if all values, of the die (2-12), has been rolled and equal amount of times (1000/12000)
-        // with a deviation of 400 times.
+        // Checks if all values, of the die (2-12), has been rolled and equal amount of times
+        // with a deviation of 593 times.
         assertEquals(0, forkertnr);
-        assertEquals(28, to, 24);
-        assertEquals(56, tre, 24);
-        assertEquals(83, fire, 24);
-        assertEquals(111, fem, 24);
-        assertEquals(139, seks, 24);
-        assertEquals(167, syv, 24);
-        assertEquals(139, otte, 24);
-        assertEquals(111, ni, 24);
-        assertEquals(83, ti, 24);
-        assertEquals(56, elleve, 24);
-        assertEquals(28, tolv, 24);
+        assertEquals(1667, to, 593);
+        assertEquals(3334, tre, 593);
+        assertEquals(5000, fire, 593);
+        assertEquals(6666, fem, 593);
+        assertEquals(8333, seks, 593);
+        assertEquals(10000, syv, 593);
+        assertEquals(8333, otte, 593);
+        assertEquals(6666, ni, 593);
+        assertEquals(5000, ti, 593);
+        assertEquals(3334, elleve, 593);
+        assertEquals(1667, tolv, 593);
 
     }
 
@@ -107,14 +104,10 @@ public class ShakerTest {
 
         // Checks if the sum given by the Shaker class is between 2 and 12.
         // Returns a boolean whether it works.
-        if (shake.getSum() >= 2 && shake.getSum() <= 12) {
+        int sum = shake.getDice()[0].getFaceValue()+shake.getDice()[1].getFaceValue();
 
-            getSumTestComplete = true;
-        }
+        assertEquals(sum, shake.getSum());
 
-
-        // Checks if the booleans are true.
-        assertEquals(true, getSumTestComplete);
 
     }
 
