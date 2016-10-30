@@ -1,31 +1,30 @@
 package Game;
 
-import java.awt.*;
-import java.util.Random;
-import java.util.Scanner;
-
 import desktop_codebehind.Car;
+import desktop_fields.Empty;
 import desktop_fields.Field;
 import desktop_resources.GUI;
-import desktop_fields.*;
+
+import java.awt.*;
+import java.util.Random;
 
 /**
  * Created by razze on 25-10-2016.
  */
 public final class GameController {
 
-    private static final Shaker shake = new Shaker(2);
-    private static final Player[] playerArray = new Player[2]; // max 6 players
+    private static final Shaker shaker = new Shaker(2); // max 2 dice due to GUI limitation.
+    private static final Player[] playerArray = new Player[2]; // max 6 players due to GUI limitation.
     private static final FieldNew[] fields = new FieldNew[40];
-    private static boolean gameWon = false;
     private static final Random rand = new Random();
+    private static boolean gameWon = false;
 
     //Prevent creation of a game controller object.
     private GameController() {
     }
 
     // Generates the fields for the board in a field array
-    public static void generateFields() {
+    public static void initializeGui() {
 
 
         fields[0] = new FieldNew()
@@ -111,45 +110,32 @@ public final class GameController {
         // Creates the GUI with the fieldarray
         GUI.create(tempField);
 
-        // Declares face values to show the die in the GUI
-        int faceValue1 = shake.getDice()[0].getFaceValue();
-        int faceValue2 = shake.getDice()[1].getFaceValue();
 
-
-        // Displays the dice on the board
-        GUI.setDice(faceValue1, faceValue2);
     }
 
-    public static void gameStart() {
-
-        // Two player objects are instantiated with names in turn.
-        // The player objects are then added the playerArray.
-        for (int i = 0; i <= playerArray.length - 1; i++) {
-            String name = GUI.getUserString("Insert Name of player " + (i + 1));
-            Player player = new Player(name);
-            playerArray[i] = player;
-
-            // Adds player to the GUI
-            // Adds a car object which has a new color, specified by a random-method between the integers 0-255
-            GUI.addPlayer(player.getName(), 1000, new Car.Builder()
-                    .primaryColor(new Color(rand.nextInt(256), rand.nextInt(256), rand.nextInt(256)))
-                    .build());
-        }
+    public static void startGame() {
 
 
-        // Initial parameters first time the game has started
+        initializePlayers();
+
+        // Sets the first turn to player 1.
         playerArray[0].setIsTurn(true);
 
-        // Loops the game until a player has won
+        // Loops the game until a player has won.
         while (!gameWon) {
 
+            //Go though all players
             for (int i = 0; i <= playerArray.length - 1; i++) {
 
+                //Player continues to play until they loose their turn.
                 while (playerArray[i].getIsTurn() && !gameWon) {
 
-                    shake.shake();
+                    shaker.shake();
 
-                    handleFieldAction(shake.getSum(), playerArray[i]);
+                    displayDice(shaker);
+
+
+                    handleFieldAction(shaker.getSum(), playerArray[i]);
 
                     if (playerArray[i].hasWon()) {
                         GUI.showMessage(playerArray[i].getName() + " Won");
@@ -157,7 +143,7 @@ public final class GameController {
                     } else {
 
                         //When the player should have more than 1 turn
-                        if (shake.getSum() != 10) {
+                        if (shaker.getSum() != 10) {
 
                             if (i + 1 <= playerArray.length - 1) {
                                 playerArray[i + 1].setIsTurn(true);
@@ -175,21 +161,52 @@ public final class GameController {
         GUI.close();
     }
 
+    private static void initializePlayers() {
+        // Two player objects are instantiated with names in turn.
+        // The player objects are then added the playerArray.
+        for (int i = 0; i <= playerArray.length - 1; i++) {
+            String name = GUI.getUserString("Insert name of player " + (i + 1));
+            Player player = new Player(name);
+            playerArray[i] = player;
+
+            // Adds player to the GUI
+            // Adds a car object which has a new color, specified by a random-method between the integers 0-255
+            GUI.addPlayer(player.getName(), 1000, new Car.Builder()
+                    .primaryColor(new Color(rand.nextInt(256), rand.nextInt(256), rand.nextInt(256)))
+                    .build());
+        }
+    }
+
+    private static void displayDice(Shaker shaker) {
+
+        // Declares face values to show the die in the GUI
+        int faceValue1 = shaker.getDice()[0].getFaceValue();
+        int faceValue2 = shaker.getDice()[1].getFaceValue();
+
+
+        // Displays the dice on the board
+        GUI.setDice(faceValue1, faceValue2);
+    }
+
 
     // Method for the gamelogic
     private static void handleFieldAction(int sum, Player player) {
 
 
-        // Finds the value of the board
-        int points = fields[sum - 2].getRent();
 
+
+        //If the player has a car somewhere on the board we need to remove it before moving it.
         if (player.getCarSpot() != 0) {
             GUI.removeCar((player.getCarSpot()), player.getName());
         }
 
+        //Place the new car.
         GUI.setCar(sum - 1, player.getName());
 
         player.setCarSpot(sum - 1);
+
+        // Finds the modifier of the specific field.
+        int points = fields[sum - 2].getRent();
 
         // Adds or subtracts points to/from the players balance
         player.getAccount().addBalance(points);
@@ -197,7 +214,7 @@ public final class GameController {
         // Displays new balance in the GUI
         GUI.setBalance(player.getName(), player.getAccount().getBalance());
 
-        GUI.showMessage(fields[sum - 2].getActionText() + "Rent: " + points);
+        GUI.showMessage(fields[sum - 2].getActionText());
 
     }
 

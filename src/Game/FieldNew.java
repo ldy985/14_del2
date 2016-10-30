@@ -2,10 +2,6 @@ package Game;
 
 import desktop_fields.Field;
 import desktop_fields.Street;
-import desktop_fields.iBuilder;
-import desktop_resources.GUI;
-
-import java.awt.*;
 
 /**
  * Created by ldylab on 28-10-2016.
@@ -22,8 +18,8 @@ public class FieldNew {
         return actionText;
     }
 
-    public FieldNew setTitle(String title) {
-        this.title = title;
+    public FieldNew setActionText(String text) {
+        actionText = text;
         return this;
     }
 
@@ -40,8 +36,8 @@ public class FieldNew {
         return title;
     }
 
-    public FieldNew setSubText(String subText) {
-        this.subText = subText;
+    public FieldNew setTitle(String title) {
+        this.title = title;
         return this;
     }
 
@@ -49,16 +45,23 @@ public class FieldNew {
         return this.subText;
     }
 
-    public FieldNew setActionText(String text) {
-        actionText = text;
+    public FieldNew setSubText(String subText) {
+        this.subText = subText;
         return this;
     }
 
     public Field toField() {
-        return new Street.Builder()
+        Street.Builder a = new Street.Builder()
                 .setTitle(title)
                 .setRent(rent + "")
-                .setSubText(rent+"")
-                .build();
+                .setSubText(rent + " Points");
+        if (title.toLowerCase().contains("the") && !title.toLowerCase().contains(" the ")) {
+            a.setDescription("This is "+title+". Landing here will result in: ");
+        } else {
+            a.setDescription("This is The "+title+". Landing here will result in: ");
+        }
+        return a.build();
     }
+
+
 }
