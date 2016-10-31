@@ -10,8 +10,13 @@ import desktop_fields.*;
 /**
  * Created by razze on 25-10-2016.
  */
+
+// Controls the logic and the flow of the game.
+// Creates the player objects and the GUI.
+// Handles input from the GUI.
 public final class GameController {
 
+    // Initialise variables
     private static final Shaker shake = new Shaker(2);
     private static final Random rand = new Random();
     private static final Player[] playerArray = new Player[2]; // max 6 players
@@ -20,7 +25,6 @@ public final class GameController {
 
     //Prevents creation of a game controller object.
     private GameController(){}
-
 
     // Generates the fields for the board in a field array
     public static void generateFields() {
@@ -91,6 +95,7 @@ public final class GameController {
         GUI.setDice(faceValue1, faceValue2);
     }
 
+    // Method for the game initialization.
     public static void gameStart() {
 
 
@@ -115,6 +120,7 @@ public final class GameController {
 
             for (int i = 0; i <= playerArray.length - 1; i++) {
 
+                // Checks which player has the turn.
                 while (playerArray[i].getIsTurn() && !gameWon) {
 
                     //Rolls the dice
@@ -129,7 +135,7 @@ public final class GameController {
 
                     } else {
 
-                        //When the player should have more than 1 turn
+                        // When the player should have more than 1 turn
                         if (shake.getSum() != 10) {
 
                             if (i + 1 <= playerArray.length - 1) {
@@ -144,7 +150,7 @@ public final class GameController {
 
                     }
 
-                    //Next turn knap
+                    // Next turn knap
                     GUI.showMessage("Tryk Ok, for at forsætte spillet");
 
 
@@ -165,13 +171,11 @@ public final class GameController {
         String pointsString = ((Street) fields[sum - 2]).getLeje();
         int points = Integer.parseInt(pointsString);
 
-        if (player.getCarSpot() != 0) {
-            GUI.removeCar((player.getCarSpot()), player.getName());
-        }
 
+        //"Moves" the car on the board by removing it in the previous location
+        // and then set it to the new location.
+        GUI.removeAllCars(player.getName());
         GUI.setCar(sum - 1, player.getName());
-
-        player.setCarSpot(sum - 1);
 
         // Adds or subtracts points to/from the players balance
         player.getAccount().addBalance(points);

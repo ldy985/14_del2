@@ -1,8 +1,9 @@
 package Game;
 
+//
 public class Shaker {
 
-    //initialising variables
+    //Initializing variables
     private int sum;
     private final Die[] dice;
 
