@@ -34,7 +34,7 @@ public final class GameController {
         fields[0] = new FieldNew()
                 .setTitle("Tower")
                 .setRent(250)
-                .setActionText("You climb a massive tower to find a chest of gold coins!");
+                .setActionText("You climb a massive tower to find a chest of gold coins! \n");
 
 
         fields[1] = new FieldNew()
@@ -52,19 +52,19 @@ public final class GameController {
         fields[3] = new FieldNew()
                 .setTitle("Cold desert")
                 .setRent(-20)
-                .setActionText("You freeze in the darkness of the cold desert night. You use some of your goods to burn for warmth.");
+                .setActionText("You freeze in the darkness of the cold desert night. You use some of your goods to burn for warmth.\n");
 
 
         fields[4] = new FieldNew()
                 .setTitle("Walled city")
                 .setRent(180)
-                .setActionText("You enter a Walled city with a grand market where you haggle your way to a nice profit!");
+                .setActionText("You enter a Walled city with a grand market where you haggle your way to a nice profit!\n");
 
 
         fields[5] = new FieldNew()
                 .setTitle("Monastery")
                 .setRent(0)
-                .setActionText("You enter the quiet monastery and nothing happens.");
+                .setActionText("You enter the quiet monastery and nothing happens. \n");
 
 
         fields[6] = new FieldNew()
@@ -76,7 +76,7 @@ public final class GameController {
         fields[7] = new FieldNew()
                 .setTitle("Huts in the mountain")
                 .setRent(60)
-                .setActionText("You sell some of your stocked goods to the villagers from the huts in the mount making a small profit.");
+                .setActionText("You sell some of your stocked goods to the villagers from the huts in the mount making a small profit.\n");
 
 
         fields[8] = new FieldNew()
@@ -89,7 +89,7 @@ public final class GameController {
         fields[9] = new FieldNew()
                 .setTitle("The pit")
                 .setRent(-50)
-                .setActionText("You fell in a pit! Some of your equipment broke from the fall and needs to be repaired...");
+                .setActionText("You fell in a pit! Some of your equipment broke from the fall and needs to be repaired...\n");
 
 
         fields[10] = new FieldNew()
