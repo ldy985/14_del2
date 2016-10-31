@@ -35,7 +35,7 @@ public final class GameController {
                 .setTitle("Tower")
                 .setRent(250)
                 .setActionText("You climb a massive tower to find a chest of gold coins!");
-        //.setSubText("r");
+
 
         fields[1] = new FieldNew()
                 .setTitle("Crater")
@@ -97,7 +97,6 @@ public final class GameController {
                 .setRent(650)
                 .setActionText("You reached the goldmine! You mine immense amounts of gold and sells it to great profit in the nearby town!");
 
-
         Field[] tempField = new Field[40];
 
         for (int i = 0; i < 11; i++) {
@@ -110,10 +109,8 @@ public final class GameController {
             tempField[i] = new Empty.Builder().build();
         }
 
-
         // Creates the GUI with the fieldarray
         GUI.create(tempField);
-
 
     }
 

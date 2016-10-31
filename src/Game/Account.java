@@ -6,7 +6,7 @@ public class Account {
     private int balance;
 
     // Sets the initial balance of the two players.
-    public Account(int initialBalance){
+    public Account(int initialBalance) {
         balance = initialBalance;
     }
 

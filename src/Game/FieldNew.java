@@ -25,7 +25,7 @@ public class FieldNew {
         return this;
     }
 
-    //Returns rent
+    // Returns rent
     public int getRent() {
         return rent;
     }

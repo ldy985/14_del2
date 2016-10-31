@@ -17,7 +17,6 @@ public class Die {
     public void roll() {
 
         faceValue = rand.nextInt(6) + 1;
-
     }
 
     // Returns the face value.
