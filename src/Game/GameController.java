@@ -22,6 +22,9 @@ public final class GameController {
     private static final FieldNew[] fields = new FieldNew[40];
     private static final Random rand = new Random();
     private static boolean gameWon = false;
+    public static int games = 0;
+    public static int runder = 0;
+    public static int minus = 0;
 
     //Prevent creation of a game controller object.
     private GameController() {
@@ -124,7 +127,10 @@ public final class GameController {
         playerArray[0].setIsTurn(true);
 
         // Loops the game until a player has won.
-        while (!gameWon) {
+        while (!gameWon && games < 100) {
+
+            runder++;
+
 
             //Go though all players
             for (int i = 0; i <= playerArray.length - 1; i++) {
@@ -136,12 +142,24 @@ public final class GameController {
 
                     displayDice(shaker);
 
-
                     handleFieldAction(shaker.getSum(), playerArray[i]);
 
                     if (playerArray[i].hasWon()) {
-                        GUI.showMessage(playerArray[i].getName() + " Won");
-                        gameWon = true;
+                        if (Game.DEBUG && playerArray[i].getAccount().getBalance() >= 3000) {
+
+                            for (Player player : playerArray) {
+                                player.getAccount().setBalance(0);
+                            }
+
+                        }
+                        if (!Game.DEBUG) {
+                            GUI.showMessage(playerArray[i].getName() + " Won");
+                            gameWon = true;
+
+                        }
+
+                        games++;
+
                     } else {
 
                         // When the player should have more than 1 turn
@@ -161,21 +179,28 @@ public final class GameController {
             }
         }
         GUI.close();
+
+        System.out.println("Games: " + games + " " + "Rounds " + runder + " " + "Minus: " + (minus / playerArray.length));
+        System.out.println((double)(minus / playerArray.length) / runder);
+        System.out.println((double)(minus / playerArray.length) / games);
     }
 
     private static void initializePlayers() {
         // Two player objects are instantiated with names in turn.
         // The player objects are then added the playerArray.
         for (int i = 0; i <= playerArray.length - 1; i++) {
+
             String name = GUI.getUserString("Insert name of player " + (i + 1));
             Player player = new Player(name);
             playerArray[i] = player;
 
             // Adds player to the GUI
             // Adds a car object which has a new color, specified by a random-method between the integers 0-255
-            GUI.addPlayer(player.getName(), 1000, new Car.Builder()
-                    .primaryColor(new Color(rand.nextInt(256), rand.nextInt(256), rand.nextInt(256)))
-                    .build());
+            if (!Game.DEBUG) {
+                GUI.addPlayer(player.getName(), 1000, new Car.Builder()
+                        .primaryColor(new Color(rand.nextInt(256), rand.nextInt(256), rand.nextInt(256)))
+                        .build());
+            }
         }
     }
 
@@ -185,9 +210,10 @@ public final class GameController {
         int faceValue1 = shaker.getDice()[0].getFaceValue();
         int faceValue2 = shaker.getDice()[1].getFaceValue();
 
-
-        // Displays the dice on the board
-        GUI.setDice(faceValue1, faceValue2);
+        if (!Game.DEBUG) {
+            // Displays the dice on the board
+            GUI.setDice(faceValue1, faceValue2);
+        }
     }
 
 
@@ -195,23 +221,34 @@ public final class GameController {
     private static void handleFieldAction(int sum, Player player) {
 
 
-
-
         //"Moves" the car on the board by removing it in the previous location
         // and then set it to the new location.
-        GUI.removeAllCars(player.getName());
-        GUI.setCar(sum - 1, player.getName());
+        if (!Game.DEBUG) {
+            GUI.removeAllCars(player.getName());
+            GUI.setCar(sum - 1, player.getName());
+        }
 
         // Finds the modifier of the specific field.
         int points = fields[sum - 2].getRent();
 
-        // Adds or subtracts points to/from the players balance
         player.getAccount().addBalance(points);
 
-        // Displays new balance in the GUI
-        GUI.setBalance(player.getName(), player.getAccount().getBalance());
+        // Adds or subtracts points to/from the players balance
+        if (Game.DEBUG && player.getAccount().getBalance() < 0) {
+            minus++;
+            player.getAccount().setBalance(0);
+            games++;
 
-        GUI.showMessage(fields[sum - 2].getActionText());
+        }
+
+        if (!Game.DEBUG) {
+            // Displays new balance in the GUI
+            GUI.setBalance(player.getName(), player.getAccount().getBalance());
+        }
+
+        if (!Game.DEBUG) {
+            GUI.showMessage(fields[sum - 2].getActionText());
+        }
 
     }
 

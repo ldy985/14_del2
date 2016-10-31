@@ -7,6 +7,7 @@ package Game;
 // Initializes the game.
 public class Game {
 
+    public static final boolean DEBUG = true;
     public static void main(String[] args) {
 
         // The GUI generates the fields on the board

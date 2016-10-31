@@ -1,5 +1,7 @@
 package Game;
 
+import jdk.nashorn.internal.runtime.Debug;
+
 // Keeps track of the balance, and adds/subtracts by the points on the board.
 public class Account {
 
@@ -14,8 +16,9 @@ public class Account {
     public boolean addBalance(int amount) {
         balance = balance + amount;
 
+
         // Makes sure the balance won't be a negative number.
-        if (balance < 0) {
+        if (balance < 0 && !Game.DEBUG) {
 
             balance = 0;
         }
@@ -25,6 +28,10 @@ public class Account {
     // Return the balance.
     public int getBalance() {
         return balance;
+    }
+
+    public void setBalance(int newBalance){
+        balance = newBalance;
     }
 
 }
