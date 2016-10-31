@@ -148,7 +148,7 @@ public final class GameController {
                     } else {
 
                         // When the player should have more than 1 turn
-                        if (shake.getSum() != 10) {
+                        if (shaker.getSum() != 10) {
 
                             if (i + 1 <= playerArray.length - 1) {
                                 playerArray[i + 1].setIsTurn(true);
@@ -204,6 +204,9 @@ public final class GameController {
         // and then set it to the new location.
         GUI.removeAllCars(player.getName());
         GUI.setCar(sum - 1, player.getName());
+
+        // Finds the modifier of the specific field.
+        int points = fields[sum - 2].getRent();
 
         // Adds or subtracts points to/from the players balance
         player.getAccount().addBalance(points);

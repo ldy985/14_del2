@@ -42,11 +42,4 @@ public class PlayerTest {
         testPlayer.getAccount().addBalance(2000);
         assertEquals(true, testPlayer.hasWon());
     }
-
-    @Test
-    public void getCarSpot() throws Exception {
-
-        testPlayer.setCarSpot(5);
-        assertEquals(5, testPlayer.getCarSpot());
-    }
 }

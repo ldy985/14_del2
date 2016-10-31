@@ -9,7 +9,7 @@ import static org.junit.Assert.assertEquals;
  */
 public class AccountTest {
     //creates a account object
-    private final Game.Account account = new Game.Account();
+    private final Game.Account account = new Game.Account(1000);
 
     @Test
     public void addBalance() throws Exception {
