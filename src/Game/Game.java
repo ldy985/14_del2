@@ -10,10 +10,10 @@ public class Game {
     public static void main(String[] args) {
 
         // The GUI generates the fields on the board
-        GameController.generateFields();
+        GameController.initializeGui();
 
-        // The gameStart() method is called to start the game
-        GameController.gameStart();
+        // The startGame() method is called to startGame the game
+        GameController.startGame();
 
     }
 }
