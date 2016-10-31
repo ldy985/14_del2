@@ -16,6 +16,7 @@ public class Shaker {
         }
     }
 
+    // Rolls the two dice
     public void shake() {
         sum = 0;
         for (Die die : this.dice) {
@@ -24,11 +25,12 @@ public class Shaker {
         }
     }
 
-
+    // Returns the sum
     public int getSum() {
         return sum;
     }
 
+    // 
     public Die[] getDice() {
         return dice;
     }
