@@ -3,12 +3,12 @@ package Game;
 import desktop_fields.Field;
 import desktop_fields.Street;
 
-/**
- * Created by ldylab on 28-10-2016.
- */
-
+//*******************************************************************
+//  FieldNew
+//
 // Acts as an extention to the GUI.
 // Makes it possible to set and get the actionText.
+//*******************************************************************
 public class FieldNew {
 
     private String title;

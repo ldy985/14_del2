@@ -1,10 +1,7 @@
 package Game;
 
-/**
- * Created by razze on 26-10-2016.
- */
 
-// Initializes the game.
+// Game entrypoint.
 public class Game {
 
     public static void main(String[] args) {

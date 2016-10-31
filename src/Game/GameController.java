@@ -1,3 +1,5 @@
+
+
 package Game;
 
 import desktop_codebehind.Car;
@@ -8,13 +10,13 @@ import desktop_resources.GUI;
 import java.awt.*;
 import java.util.Random;
 
-/**
- * Created by razze on 25-10-2016.
- */
-
+//*******************************************************************
+//  GameController
+//
 // Controls the logic and the flow of the game.
 // Creates the player objects and the GUI.
 // Handles input from the GUI.
+//*******************************************************************
 public final class GameController {
 
     private static final Shaker shaker = new Shaker(2); // max 2 dice due to GUI limitation.
@@ -193,8 +195,6 @@ public final class GameController {
 
     // Method for the gamelogic
     private static void handleFieldAction(int sum, Player player) {
-
-
 
 
         //"Moves" the car on the board by removing it in the previous location

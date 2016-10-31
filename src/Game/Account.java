@@ -1,6 +1,10 @@
 package Game;
 
+//*******************************************************************
+//  Account
+//
 // Keeps track of the balance, and adds/subtracts by the points on the board.
+//*******************************************************************
 public class Account {
 
     private int balance;

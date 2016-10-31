@@ -1,6 +1,10 @@
 package Game;
 
+//*******************************************************************
+//  Shaker
 //
+// Contains objects of the Die class
+//*******************************************************************
 public class Shaker {
 
     //Initializing variables

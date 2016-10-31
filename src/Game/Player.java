@@ -1,7 +1,12 @@
 package Game;
 
+
+//*******************************************************************
+//  Player
+//
 // Represents each player as an object.
 // Keeps track of whether the player has his turn, has won, and the car spot for the previous turn.
+//*******************************************************************
 public class Player {
 
     private final String name;
