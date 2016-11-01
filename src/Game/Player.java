@@ -12,7 +12,6 @@ public class Player {
     private final String name;
     private boolean isTurn;
     private final Account account;
-    private int carSpot = 0;
 
     //
     public Player(String playerName) {
